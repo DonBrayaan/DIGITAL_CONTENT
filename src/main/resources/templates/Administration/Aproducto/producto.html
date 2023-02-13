@@ -18,99 +18,84 @@
 	th:href="@{/datatables/DataTables-1.12.1/css/dataTables.bootstrap5.min.css}" />
 </head>
 <body>
-
 	<!-- HEADER -->
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-		<div class="container-fluid">
-			<a class="navbar-brand" href="Barrio.html"> <img
-				src="/imgs/LOGO1.png" alt="" width="20" height="24"
-				class="d-inline-block align-text-top" /> Digital Content
-			</a>
-			<button class="navbar-toggler" type="button"
-				data-bs-toggle="collapse" data-bs-target="#navbarNav"
-				aria-controls="navbarNav" aria-expanded="false"
-				aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarNav">
-				<ul class="navbar-nav ms-auto">
-					<li class="nav-item mx-2"><a class="nav-link active"
-						aria-current="page" style="padding-top: 0px; padding-bottom: 5px">
-							<i class="fa-solid fa-house"></i>
-					</a></li>
-					<li class="nav-item mx-2"><a class="nav-link"
-						style="padding-top: 0px; padding-bottom: 5px"> <i
-							class="fa-sharp fa-solid fa-cart-shopping"></i>
-					</a></li>
-					<li class="nav-item mx-2"><a class="nav-link"
-						style="padding-top: 0px; padding-bottom: 5px"> Iniciar sesión
-					</a></li>
-				</ul>
+
+	<nav th:replace="~{layouts/header :: header}">Header</nav>
+
+	<!-- SIDEBAR -->
+
+	<div class="container-fluid">
+		<div class="row flex-nowrap">
+			<div th:replace="~{layouts/Adminmenu :: menu}">Menú</div>
+			<div class="col py-3" style="width: 10px">
+				<h3 align="center">Producto</h3>
+				<!-- BUTTON -->
+
+				<a th:href="@{/admin/producto/nuevoP}"
+					class="btn btn-outline-success" id="btnC">Crear</a> <a
+					th:href="@{/productoC}" class="btn btn-outline-danger" id="btn">Catalogo</a>
+
+				<!-- TABLE -->
+
+				<div class="container my-4" id="scroll">
+					<div class="row">
+						<table id="tableP" class="table table-dark table-striped">
+							<thead>
+								<tr>
+									<th>#</th>
+									<th>Nombre</th>
+									<th>Talla</th>
+									<th>Color</th>
+									<th>Precio</th>
+									<th>Categoria</th>
+									<th>Genero</th>
+									<th>Foto</th>
+									<th>Options</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="producto : ${producto}">
+									<td th:text="${producto.idProducto}"></td>
+									<td th:text="${producto.nombre}"></td>
+									<td th:text="${producto.id_Talla_fk.nombreTalla}"></td>
+									<td th:text="${producto.id_Color_fk.nombreColor}"></td>
+									<td th:text="${producto.precio}"></td>
+									<td th:text="${producto.id_Categoria_fk.nombreCategoria}"></td>
+									<td th:text="${producto.id_Genero_fk.nombre}"></td>
+									<td><img src="imgs/LOGO1.png" width="30"></td>
+									<td class="d inline-block"><a
+										th:href="@{'/admin/producto/editar'+'/'+ ${producto.idProducto}}"
+										class="btn btn-success">Editar</a>
+
+
+										<button
+											th:onclick="@{'confirmar('+ ${producto.idProducto} +')'}"
+											class="btn btn-danger" data-bs-toggle="modal"
+											data-bs-target="#ModalC">Eliminar</button></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
 			</div>
 		</div>
-	</nav>
-
-	<!-- BUTTON -->
-
-	<a th:href="@{/admin/producto/nuevoP}" class="btn btn-outline-success"
-		id="btnC">Crear</a>
-	<a th:href="@{/productoC}" class="btn btn-outline-danger"
-		id="btn">Catalogo</a>
-
-	<!-- TABLE -->
-	
-	<div class="container my-4" id="scroll">
-		<div class="row">
-			<table id="tableP" class="table table-dark table-striped">
-				<thead>
-					<tr>
-						<th>#</th>
-						<th>Nombre</th>
-						<th>Talla</th>
-						<th>Color</th>
-						<th>Precio</th>
-						<th>Categoria</th>
-						<th>Genero</th>
-						<th>Foto</th>
-						<th>Options</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr th:each="producto : ${producto}">
-						<td th:text="${producto.idProducto}"></td>
-						<td th:text="${producto.nombre}"></td>
-						<td th:text="${producto.id_Talla_fk.nombreTalla}"></td>
-						<td th:text="${producto.id_Color_fk.nombreColor}"></td>
-						<td th:text="${producto.precio}"></td>
-						<td th:text="${producto.id_Categoria_fk.nombreCategoria}"></td>
-						<td th:text="${producto.id_Genero_fk.nombre}"></td>
-						<td><img src="imgs/LOGO1.png" width="30"></td>
-						<td class="d inline-block"><a
-							th:href="@{'/admin/producto/editar'+'/'+ ${producto.idProducto}}"
-							class="btn btn-success">Editar</a>
-
-
-							<button th:onclick="@{'confirmar('+ ${producto.idProducto} +')'}"
-								class="btn btn-danger" data-bs-toggle="modal"
-								data-bs-target="#ModalC">Eliminar</button></td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
 	</div>
-		<style>
-			#scroll{	
-				overflow-x:scroll;
-				overflow:overlay;
-				overflow-y:hidden;
-	     		width:80%;	
-			}
-		</style>
+
+
+	<style>
+#scroll {
+	overflow-x: scroll;
+	overflow: overlay;
+	overflow-y: hidden;
+	width: 80%;
+}
+</style>
 
 	<input type="hidden" id="txt_id">
-	
-	
-		<!-- Modal -->
+
+
+	<!-- Modal -->
 
 	<div class="modal fade" id="ModalC" tabindex="-1"
 		aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -135,28 +120,12 @@
 
 	<!-- FOOTER -->
 
-	<footer class="py-3 my-4" id="footerC">
+	<footer th:replace="~{layouts/footer :: footer}">Footer</footer>
 
-		<ul class="nav justify-content-center border-bottom pb-3 mb-3">
-			<li class="nav-item"><a href="#"
-				class="nav-link px-2 text-muted">Home</a></li>
-			<li class="nav-item"><a href="#"
-				class="nav-link px-2 text-muted">Features</a></li>
-			<li class="nav-item"><a href="#"
-				class="nav-link px-2 text-muted">Pricing</a></li>
-			<li class="nav-item"><a href="#"
-				class="nav-link px-2 text-muted">FAQs</a></li>
-			<li class="nav-item"><a href="#"
-				class="nav-link px-2 text-muted">About</a></li>
-		</ul>
-		<p class="text-center text-muted">
-			<img src="/imgs/LOGO1.png" alt="alt" width="20" height="24" />
-			&copy; 2022 Digital Content, designed by <span>DonBrayaan</span>
-		</p>
-	</footer>
 
 	<!-- Script Bootstrap -->
-	<script th:src="@{/bootstrap/js/bootstrap.min.js}" crossorigin="anonymous"></script>
+	<script th:src="@{/bootstrap/js/bootstrap.min.js}"
+		crossorigin="anonymous"></script>
 	<!-- JQuery -->
 	<script type="text/javascript" th:src="@{/JQuery/jquery-3.6.1.min.js}"></script>
 	<!-- DataTables -->
