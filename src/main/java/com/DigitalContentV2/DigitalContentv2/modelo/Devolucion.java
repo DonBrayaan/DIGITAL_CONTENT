@@ -2,7 +2,6 @@ package com.DigitalContentV2.DigitalContentv2.modelo;
 
 import java.io.Serializable;
 import java.util.Calendar;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,7 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -45,5 +43,45 @@ public class Devolucion implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "id_Producto_fk")
 	private Producto id_Producto_fk;
+
+	public int getIdDevolucion() {
+		return idDevolucion;
+	}
+
+	public void setIdDevolucion(int idDevolucion) {
+		this.idDevolucion = idDevolucion;
+	}
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
+	public Calendar getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(Calendar fecha) {
+		this.fecha = fecha;
+	}
+
+	public Producto getId_Producto_fk() {
+		return id_Producto_fk;
+	}
+
+	public void setId_Producto_fk(Producto id_Producto_fk) {
+		this.id_Producto_fk = id_Producto_fk;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	
+	
 	
 	}
+
+
