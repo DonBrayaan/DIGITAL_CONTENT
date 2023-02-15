@@ -9,11 +9,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.DigitalContentV2.DigitalContentv2.facadeImp.Generodao;
 import com.DigitalContentV2.DigitalContentv2.modelo.Genero;
 
 @Controller
+@RequestMapping("/admin/")
 public class GeneroController {
 	
 	@Autowired
@@ -22,16 +24,22 @@ public class GeneroController {
 	@GetMapping({"/genero"})
 	public String allGenero(Model modelo) {
 
-		List<Genero> lstGenero = this.generoDao.encontrarTodo();
+		List<Genero> lstGenero = this.generoDao.encontrarporEstado();
 		modelo.addAttribute("listaG", lstGenero);
-		return "/Agenero/genero";
+		return "Administration/Agenero/genero";
 		
+	}
+	
+	@GetMapping("/genero/nuevoG")
+	public String formularioCrear(Model modelo) {
+		modelo.addAttribute("generoN",new Genero());
+		return "Administration/Agenero/formulario_cg";
 	}
 	
 	@PostMapping("/genero")
 	public String crearGenero(@ModelAttribute("generoN") Genero genero) {
 		generoDao.crear(genero);
-		return "redirect:/genero";
+		return "redirect:/admin/genero";
 	}
 	
 	@GetMapping("/genero/editar/{idGenero}")
@@ -39,24 +47,20 @@ public class GeneroController {
 		
 		Genero genero = generoDao.encontrarId(idGenero);
 		modelo.addAttribute("genero",genero);
-		return "Agenero/formulario_eg";
+		return "Administration/Agenero/formulario_eg";
 	}
 	
 	@GetMapping("/genero/eliminar/{idGenero}")
-	public String eliminarGenero(@PathVariable("idGenero") Integer idGenero, Model modelo){
-		generoDao.eliminar(idGenero);	
-		return "redirect:/genero";
-	}
-	
-	@GetMapping("/genero/eliminare/{idGenero}")
-	private String eliminarGenero(@PathVariable("idGenero") Integer idGenero) {
+	public String eliminarGenero(@PathVariable("idGenero") Integer idGenero){
 		
 		Genero genero = generoDao.encontrarId(idGenero);
 		
 		genero.setEstado("Inactivo");
 		this.generoDao.actualizarEstado(genero);
-		return "redirect:/genero";
+		return "redirect:/admin/genero";
 	}
+	
+
 
 }
 
