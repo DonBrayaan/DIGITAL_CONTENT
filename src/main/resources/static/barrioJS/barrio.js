@@ -1,32 +1,16 @@
-$(document).ready(function() {
-	$('#exampleS').DataTable({
-		dom: 'Bfrtilp',
-		buttons: [
-			{
-				extend: 'excelHtml5',
-				text: '<i class="fa-solid fa-file-excel"></i>',
-				titleAttr: 'Exportar a Excel',
-				className: 'btn btn-success'
-			},
-			{
-				extend: 'pdfHtml5',
-				text: '<i class="fa-solid fa-file-pdf"></i>',
-				titleAttr: 'Exportar a PDF',
-				className: 'btn btn-danger'
-			}
-		]
-	});
+$(document).ready(function () {
+    $('#exampleS').DataTable();
 });
 
 
-function eliminar() {
+function eliminar(){2
 
 	var idBarrio = document.getElementById("txt_id").value;
-	location.href = "/admin/barrio/eliminare/" + idBarrio;
-
+	location.href="/admin/barrio/eliminar/" + idBarrio;
+	
 }
 
-function confirmar(idBarrio) {
-	document.getElementById("txt_id").value = idBarrio;
+function confirmar(idBarrio){
+	document.getElementById("txt_id").value=idBarrio;
 
 }
