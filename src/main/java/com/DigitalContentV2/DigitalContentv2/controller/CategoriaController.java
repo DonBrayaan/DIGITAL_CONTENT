@@ -62,7 +62,4 @@ public class CategoriaController {
 		return "redirect:/admin/categoria";
 	}
 
-	public ResponseEntity<Categoria> crear(ResponseEntity<Categoria> cat ){
-		return new ResponseEntity<cat>();
-	}
 }
