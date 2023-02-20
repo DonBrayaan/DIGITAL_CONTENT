@@ -26,24 +26,25 @@
 			<div class="col-sm-10">
 				<div class="row border rounded">
 					<div class="col-3">
-						<img th:src="@{ss}">
+						<img th:if="${producto.foto}" th:src="@{'/cat/uploads/' + ${producto.foto}}" style="width: 250px; height: 250px; margin: 0 auto;" class="card-img-top my-3" alt="">
 					</div>
-					<div class="col-5">
+					<div class="col-5" style="text-align: center;">
 						<div>
+						<br>
 							<a>
-								<b th:text="${producto.nombre}"></b>
+								<b th:text="${producto.nombre}" style="font-size: 30px"></b>
 							</a>
 						</div>
 					</div>
 					<div class="col-2">
 						<div>
+						<br>
 							<span>X</span>
-							<span>$[[${producto.precio}]]</span>
+							<span style="font-size: 30px">$[[${producto.precio}]]</span>
 						</div>
 					</div>
 					<div class="col-2">
-						<div>
-							<span>X</span>
+						<div><br>
 							<div th:replace="controldecantidad :: control_cantidad(1, ${producto.idProducto})">Cantidad</div>
 						<button id="buttonAddCart" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#myModal">Agregar al Carrito<i class="fa-solid fa-cart-shopping"></i></button>
 					</div>
