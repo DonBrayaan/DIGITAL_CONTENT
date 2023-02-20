@@ -18,7 +18,7 @@ import com.DigitalContentV2.DigitalContentv2.facade.IUploadFile;
 @Service
 public class UploadFielddao implements IUploadFile {
 
-	private final static String UPLOADS_FOLDER = "uploads";
+	private final static String UPLOADS_FOLDER = "src/main/resources/static/imgs";
 
 	@Override
 	public Resource load(String filename) throws MalformedURLException {
