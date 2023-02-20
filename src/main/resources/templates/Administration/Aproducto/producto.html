@@ -62,7 +62,8 @@
 									<td th:text="${producto.precio}"></td>
 									<td th:text="${producto.id_Categoria_fk.nombreCategoria}"></td>
 									<td th:text="${producto.id_Genero_fk.nombre}"></td>
-									<td><img src="imgs/LOGO1.png" width="30"></td>
+									<td><img th:if="${producto.foto}" th:src="@{'/cat/uploads/' + ${producto.foto}}" style="width: 30px; height: 30px; margin: 0 auto;">
+				</td>
 									<td class="d inline-block"><a
 										th:href="@{'/admin/producto/editar'+'/'+ ${producto.idProducto}}"
 										class="btn btn-success">Editar</a>
