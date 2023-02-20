@@ -1,12 +1,8 @@
 package com.DigitalContentV2.DigitalContentv2.controller;
 
-import java.net.MalformedURLException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.Resource;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -120,7 +116,7 @@ public class ProductoController {
 
 	@PostMapping("/save")
 	public String saveMeme(@Validated @ModelAttribute("meme") Producto prod, BindingResult result, Model model,
-			@RequestParam("file") MultipartFile image, RedirectAttributes flash, SessionStatus status)
+			@RequestParam(value = "file") MultipartFile image, RedirectAttributes flash, SessionStatus status)
 			throws Exception {
 		if (result.hasErrors()) {
 			System.out.println(result.getFieldError());
@@ -137,5 +133,29 @@ public class ProductoController {
 			status.setComplete();
 		}
 		return "redirect:/admin/producto";
+	}
+	
+	@GetMapping("/editfoto")
+	public String editfot() {
+		return "Administration/Aproducto/ef";
+	} 
+	
+	@GetMapping("/editfoto/{idProducto}")
+	private String editfot(@PathVariable("idProducto") Integer idProducto, Model modelo) {
+
+		Producto producto = productoDao.encontrarId(idProducto);
+		modelo.addAttribute("producto", producto);
+
+		List<Categoria> lstCat = categoriaDao.encontrarTodo();
+		List<Talla> lstTalla = tallaDao.encontrarTodo();
+		List<Color> lstCol = colorDao.encontrarTodo();
+		List<Genero> lstGen = generoDao.encontrarTodo();
+
+		modelo.addAttribute("lstCat", lstCat);
+		modelo.addAttribute("lstTalla", lstTalla);
+		modelo.addAttribute("lstCol", lstCol);
+		modelo.addAttribute("lstGen", lstGen);
+
+		return "Administration/Aproducto/ef";
 	}
 }
