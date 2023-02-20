@@ -37,7 +37,8 @@
 						style="text-decoration: none; color: grey;" th:href="@{'/carrito/remove/' + ${product.idProducto}}"></a></div>
 					</div>
 					<div class="col-3">
-						<img th:src="@{ss}">
+						<img th:if="${product.foto}" th:src="@{'/cat/uploads/' + ${product.foto}}" style="width: 200px; height: 200px; margin: 0 auto;" class="card-img-top my-3" alt="">
+					
 					</div>
 					<div class="col-6">
 						<div>
