@@ -34,7 +34,7 @@ public class CategoriaController {
 	@GetMapping("/categoria/nuevoC")
 	public String formularioCrear(Model modelo) {
 		modelo.addAttribute("categoriaN",new Categoria());
-		return "Administration/Acategoria";
+		return "Administration/Acategoria/formulario_cc";
 	}
 	
 	@PostMapping("/categoria")
