@@ -24,9 +24,9 @@ public class DevolucionController {
 	@GetMapping({"/devolucion"})
 	public String allDevolucion(Model modelo) {
 
-		List<Devolucion> lstDevolucion = this.devolucionDao.encontrarporEstado();
+		List<Devolucion> lstDevolucion = this.devolucionDao.encontrarTodo();
 		modelo.addAttribute("listaD", lstDevolucion);
-		return "/Adevolucion/Adevolucion/devolucion";
+		return "/Administration/Adevolucion/devolucion";
 	}
 	
 	@GetMapping("/devolucion/nuevoD")
