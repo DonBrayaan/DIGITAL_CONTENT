@@ -2,6 +2,7 @@ package com.DigitalContentV2.DigitalContentv2.modelo;
 
 import java.io.Serializable;
 import java.util.Calendar;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,6 +14,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "devolucion")
@@ -31,8 +34,9 @@ public class Devolucion implements Serializable {
 	private String descripcion;
 	
 	@Column(name = "fecha", updatable = false, nullable = false)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Temporal(TemporalType.DATE)
-	private Calendar fecha;
+	private Date fecha;
 	
 	/*
 	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
@@ -47,6 +51,20 @@ public class Devolucion implements Serializable {
 	public int getIdDevolucion() {
 		return idDevolucion;
 	}
+	
+	
+
+	public Date getFecha() {
+		return fecha;
+	}
+
+
+
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
+	}
+
+
 
 	public void setIdDevolucion(int idDevolucion) {
 		this.idDevolucion = idDevolucion;
@@ -60,13 +78,7 @@ public class Devolucion implements Serializable {
 		this.descripcion = descripcion;
 	}
 
-	public Calendar getFecha() {
-		return fecha;
-	}
-
-	public void setFecha(Calendar fecha) {
-		this.fecha = fecha;
-	}
+	
 
 	public Producto getId_Producto_fk() {
 		return id_Producto_fk;
