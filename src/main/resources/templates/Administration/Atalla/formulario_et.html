@@ -65,7 +65,7 @@
                 </figure>
                 <input type="hidden" th:field="*{idTalla}" th:value="${talla.idTalla}">
 				<label>Nombre: </label>
-				<input type="text" th:field="*{nombreTalla}" name="nombre" class="form-control" placeholder="Ingrese nuevo nombre" required>
+				<input type="text" th:field="*{nombreTalla}" name="nombre" class="form-control" id="txtnombre" placeholder="Ingrese nuevo nombre" required>
 				<br>
 				<label>Estado:</label>
 				<select class="form-select" th:field="*{estado}" required>
@@ -74,7 +74,7 @@
 				</select>
 				<br>
 				<div class="box-footer">
-					<button class="btn btn-danger">Actualizar</button>	
+					<button class="btn btn-danger" onclick="return si()">Actualizar</button>	
 				</div>
 				<br>
 			</form>
@@ -111,6 +111,13 @@
 	<!-- Font Awesome -->
 	<script src="https://kit.fontawesome.com/e4804d9539.js"
 		crossorigin="anonymous"></script>
+	<!-- JQuery -->
+	<script type="text/javascript" th:src="@{/JQuery/jquery-3.6.1.min.js}"></script>
+	<!-- JavaScript -->
+	<script type="text/javascript"
+		th:src="@{/Validaciones/EditarTallaValidacion.js}"></script>
+	<!-- SweetAlert2 -->
+	<script type="text/javascript" th:src="@{/SweetAlert2/package/dist/sweetalert2.all.min.js}"></script>
 
 </body>
 </html>
