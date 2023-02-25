@@ -65,19 +65,19 @@
                 </figure>
                 <input type="hidden" th:field="*{idProveedor}" th:value="${proveedor.idProveedor}">
                 <label>Nombres: </label>
-				<input type="text" th:field="*{nombres}" name="nombres" class="form-control" placeholder="Ingrese nuevos nombres" required>
+				<input type="text" th:field="*{nombres}" name="nombres" class="form-control" id="txtnombre" placeholder="Ingrese nuevos nombres" required>
 				<br>
 				<label>Apellidos: </label>
-				<input type="text" th:field="*{apellidos}" name="apellidos" class="form-control" placeholder="Ingrese nuevos apellidos" required>
+				<input type="text" th:field="*{apellidos}" name="apellidos" class="form-control" id="txtapellido" placeholder="Ingrese nuevos apellidos" required>
 				<br>
 				<label>Tipo Producto: </label>
-				<input type="text" th:field="*{tipoProducto}" name="tipoProducto" class="form-control" placeholder="Ingrese nuevos tipo de producto" required>
+				<input type="text" th:field="*{tipoProducto}" name="tipoProducto" class="form-control" id="txttipoProducto" placeholder="Ingrese nuevos tipo de producto" required>
 				<br>
 				<label>Direccion: </label>
-				<input type="text" th:field="*{direccion}" name="direccion" class="form-control" placeholder="Ingrese nueva direccion" required>
+				<input type="text" th:field="*{direccion}" name="direccion" class="form-control"  id="txtdireccion" placeholder="Ingrese nueva direccion" required>
 				<br>
 				<label>Celular: </label>
-				<input type="text" th:field="*{celular}" name="celular" class="form-control" placeholder="Ingrese nuevo celular" required>
+				<input type="number" th:field="*{celular}" name="celular" class="form-control" placeholder="Ingrese nuevo celular" required>
 				<br>
 				<label>Estado:</label>
 				<select class="form-select" th:field="*{estado}" required>
@@ -86,7 +86,7 @@
 				</select>
 				<br>
 				<div class="box-footer">
-					<button class="btn btn-danger">Actualizar</button>	
+					<button class="btn btn-danger" onclick="return si()">Actualizar</button>	
 				</div>
 				<br>
 			</form>
@@ -123,5 +123,12 @@
 	<!-- Font Awesome -->
 	<script src="https://kit.fontawesome.com/e4804d9539.js"
 		crossorigin="anonymous"></script>
+	<!-- JQuery -->
+	<script type="text/javascript" th:src="@{/JQuery/jquery-3.6.1.min.js}"></script>
+	<!-- JavaScript -->
+	<script type="text/javascript"
+		th:src="@{/Validaciones/EditarProveedorValidacion.js}"></script>
+	<!-- SweetAlert2 -->
+	<script type="text/javascript" th:src="@{/SweetAlert2/package/dist/sweetalert2.all.min.js}"></script>
 </body>
 </html>

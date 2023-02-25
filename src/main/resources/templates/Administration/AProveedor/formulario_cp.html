@@ -64,19 +64,19 @@
                         		</figcaption>
                         	</figure>
                         <label>Nombres: </label>
-                        <input type="text" name="nombres" th:field="*{nombres}" class="form-control" placeholder="Ingrese Nombres" required>
+                        <input type="text" name="nombres" th:field="*{nombres}" class="form-control" id="txtnombre" placeholder="Ingrese Nombres" required>
 						<br>
 						<label>Apellidos: </label>
-                        <input type="text" name="Apellidos" th:field="*{apellidos}" class="form-control" placeholder="Ingrese Apellidos" required>
+                        <input type="text" name="Apellidos" th:field="*{apellidos}" class="form-control" id="txtapellido" placeholder="Ingrese Apellidos" required>
                         <br>
                         <label>Tipo Producto: </label>
-                        <input type="text" name="Tipo Producto" th:field="*{tipoProducto}" class="form-control" placeholder="Ingrese Tipo de Producto" required>
+                        <input type="text" name="Tipo Producto" th:field="*{tipoProducto}" class="form-control" id="txttipoProducto" placeholder="Ingrese Tipo de Producto" required>
                         <br>
                         <label>Direccion: </label>
-                        <input type="text" name="Direccion" th:field="*{direccion}" class="form-control" placeholder="Ingrese Direccion" required>
+                        <input type="text" name="Direccion" th:field="*{direccion}" class="form-control" id="txtdireccion" placeholder="Ingrese Direccion" required>
                         <br>
                         <label>Celular: </label>
-                        <input type="text" name="Celular" th:field="*{celular}" class="form-control" placeholder="Ingrese Celular" required>
+                        <input type="number" name="Celular" th:field="*{celular}" class="form-control" placeholder="Ingrese Celular" required>
                         <br>
                         <label>Estado:</label>
 						<select class="form-select" th:field="*{estado}" required>
@@ -85,7 +85,7 @@
 				 		</select>
 				 		<br>
 				 		<div class="box-footer">
-					<button class="btn btn-danger">Registrar</button>
+					<button class="btn btn-danger" onclick="return si()">Registrar</button>
 				</div>
 				<br>
 			</form>
@@ -122,5 +122,12 @@
 	<!-- Font Awesome -->
 	<script src="https://kit.fontawesome.com/e4804d9539.js"
 		crossorigin="anonymous"></script>
+	<!-- JQuery -->
+	<script type="text/javascript" th:src="@{/JQuery/jquery-3.6.1.min.js}"></script>
+	<!-- JavaScript -->
+	<script type="text/javascript"
+		th:src="@{/Validaciones/CrearProveedorValidacion.js}"></script>
+	<!-- SweetAlert2 -->
+	<script type="text/javascript" th:src="@{/SweetAlert2/package/dist/sweetalert2.all.min.js}"></script>
 </body>
 </html>
