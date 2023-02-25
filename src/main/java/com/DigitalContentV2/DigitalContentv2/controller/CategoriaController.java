@@ -49,7 +49,7 @@ public class CategoriaController {
 		Categoria categoria = categoriaDao.encontrarId(idCategoria);
 		modelo.addAttribute("categoria",categoria);
 	
-		return "Administration/Acategoria";
+		return "Administration/Acategoria/formulario_ec";
 	}
 	
 	@GetMapping("/categoria/eliminar/{idCategoria}")
