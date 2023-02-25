@@ -60,7 +60,7 @@
                 </figure>
 				<input type="hidden" th:field="*{idBarrio}" th:value="${barrio.idBarrio}">
 				<label>Nombre: </label>
-				<input type="text" th:field="*{nombre}" name="nombre" class="form-control" placeholder="Ingrese nuevo nombre" required>
+				<input type="text" th:field="*{nombre}" name="nombre" class="form-control" id="txtnombre" placeholder="Ingrese nuevo nombre" required>
 				<br>
 				<label>Estado:</label>
 				<select class="form-select" th:field="*{estado}" required>
@@ -76,7 +76,7 @@
 				</select>
 				<br>
 				<div class="box-footer">
-					<button class="btn btn-danger">Actualizar</button>	
+					<button class="btn btn-danger" onclick="return si()">Actualizar</button>	
 				</div>
 				<br>
 			</form>
@@ -111,6 +111,13 @@
 	<script type="text/javascript" src="/JQuery/jquery-3.6.1.min.js"></script>
 	<!-- JavaScript -->
 	<script type="text/javascript" src="/clienteJS/cliente.js"></script>
+	<!-- JQuery -->
+	<script type="text/javascript" th:src="@{/JQuery/jquery-3.6.1.min.js}"></script>
+	<!-- JavaScript -->
+	<script type="text/javascript"
+		th:src="@{/Validaciones/EditarBarrioValidacion.js}"></script>
+	<!-- SweetAlert2 -->
+	<script type="text/javascript" th:src="@{/SweetAlert2/package/dist/sweetalert2.all.min.js}"></script>
 </body>
 </html>
 </body>
