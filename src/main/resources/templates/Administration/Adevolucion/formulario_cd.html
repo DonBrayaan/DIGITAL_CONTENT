@@ -65,13 +65,13 @@
                 </figure>
                 <input type="hidden" th:field="*{idDevolucion}" th:value="${devolucionN.idDevolucion}">
 				<label>Descripcion: </label>
-				<input type="text" th:field="*{descripcion}" name="nombre" class="form-control" placeholder="Ingrese nuevo nombre" required>
+				<input type="text" th:field="*{descripcion}" name="nombre" class="form-control" id="txtdescripcion" placeholder="Ingrese nuevo nombre" required>
 				<br>
 				<label>Fecha: </label>
 				<input type="date" th:field="*{fecha}" name="nombre" class="form-control" placeholder="Ingrese Fecha" required>
 				<br>
 				<div class="box-footer">
-					<button class="btn btn-danger">Actualizar</button>	
+					<button class="btn btn-danger" onclick="return si()">Actualizar</button>	
 				</div>
 				<br>
 			</form>
@@ -108,6 +108,13 @@
 	<!-- Font Awesome -->
 	<script src="https://kit.fontawesome.com/e4804d9539.js"
 		crossorigin="anonymous"></script>
+	<!-- JQuery -->
+	<script type="text/javascript" th:src="@{/JQuery/jquery-3.6.1.min.js}"></script>
+	<!-- JavaScript -->
+	<script type="text/javascript"
+		th:src="@{/Validaciones/CrearDevolucionValidacion.js}"></script>
+	<!-- SweetAlert2 -->
+	<script type="text/javascript" th:src="@{/SweetAlert2/package/dist/sweetalert2.all.min.js}"></script>
 
 </body>
 </html>
